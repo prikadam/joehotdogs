@@ -18,7 +18,7 @@
 			discount = true;
 			subtotal = subtotal * 0.9;
 		}
-		if (subtotal < 20) {
+		else (subtotal < 20) {
 			discount = false;
 			subtotal = subtotal;
 		}
@@ -42,7 +42,7 @@
 		if (discount == true){
 			document.write("You qualified for our 10% discount <br>");
 		}	
-		if (discount == false){
+		else (discount == false){
 			document.write("You did not qualify for our 10% discount <br>");
 		} 
 		document.write("Your subtotal is: $", subtotal.toFixed(2), "<br>");
