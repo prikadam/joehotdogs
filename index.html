@@ -18,6 +18,10 @@
 			discount = true;
 			subtotal = subtotal * 0.9;
 		}
+		if (subtotal < 20) {
+			discount = false;
+			subtotal = subtotal;
+		}
 		if (hotdogs == ""){
 			hotdogs = 0;
 		} 
