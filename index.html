@@ -18,10 +18,6 @@
 			discount = true;
 			subtotal = subtotal * 0.9;
 		}
-		else (subtotal < 20) {
-			discount = false;
-			subtotal = subtotal;
-		}
 		if (hotdogs == ""){
 			hotdogs = 0;
 		} 
@@ -41,8 +37,7 @@
 						(sodas * 1.80).toFixed(2) , "<br>");
 		if (discount == true){
 			document.write("You qualified for our 10% discount <br>");
-		}	
-		else (discount == false){
+		} else {
 			document.write("You did not qualify for our 10% discount <br>");
 		} 
 		document.write("Your subtotal is: $", subtotal.toFixed(2), "<br>");
