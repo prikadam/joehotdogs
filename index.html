@@ -25,6 +25,7 @@
         sodas = parseInt(document.getElementById("Sodas").value);
 
         if ((hotdogs + fries + sodas) == 0) {
+            document.getElementById("errMsg").style.display = "inline-block";
             document.getElementById("error").innerHTML = "Error: You must select at least one item";
             return false;
         } else {
