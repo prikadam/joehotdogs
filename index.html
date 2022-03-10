@@ -27,7 +27,6 @@
         sodas = parseInt(document.getElementById("Sodas").value);
 
         if ((hotdogs + fries + sodas) == 0) {
-            document.getElementById("errMsg").style.display = "inline-block";
             document.getElementById("error").innerHTML = "Error: You must select at least one item";
             return false;
         } else {
@@ -41,7 +40,7 @@
                 subtotal = subtotal * 0.9;
             }
             
-            finalprice = subtotal * (1.0625);
+            finalprice = subtotal * (1 + .0625);
             
             if (discount == true) {
                 alert("You have ordered " + hotdogs + " hotdogs, " + fries + 
