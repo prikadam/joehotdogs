@@ -2,12 +2,12 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>Joe's Hotdogs Extra Credit Assignment</title>
+<title>Joe's Hotdogs using form Extra Credit</title>
 
 <style type="text/css">
-    #error {
-        color: #d20e0e;
-        border: solid 1px #d20e0e;
+    #errMsg {
+        color: #D20E11;
+        border: solid 1px #d20e11;
         display:none;
         padding: 1px 15px;
     }
@@ -20,19 +20,25 @@
     <script language="javascript">
     
     discount = 0;
+    hotdog_price = 3.25;
+    fries_price = 2.00;
+    soda_price = 1.50;
+    mass_tax = 0.0625;
     
-    function calculate( ){
+    
+    function cal( ){
         hotdogs = parseInt(document.getElementById("Hotdogs").value);
         fries = parseInt(document.getElementById("Fries").value);
         sodas = parseInt(document.getElementById("Sodas").value);
 
         if ((hotdogs + fries + sodas) == 0) {
-            document.getElementById("error").innerHTML = "Error: You must select at least one item";
+            document.getElementById("errMsg").style.display = "inline-block";
+            document.getElementById("errMsg").innerHTML = "Please Select At Least One Item";
             return false;
         } else {
-            subtotal = (3.25 * hotdogs) + (2.00 * fries) + (1.50 * sodas);
+            subtotal = (hotdog_price * hotdogs) + (fries_price * fries) + (soda_price * sodas);
             
-            subtotaloriginal = subtotal;
+            subtotal_original = subtotal;
             
             if (subtotal >= 20) {
                 discount = true;
@@ -40,34 +46,37 @@
                 subtotal = subtotal * 0.9;
             }
             
-            finalprice = subtotal * (1 + .0625);
+            final_price = subtotal * (1 + mass_tax);
             
             if (discount == true) {
                 alert("You have ordered " + hotdogs + " hotdogs, " + fries + 
-                      " fries, and " + sodas + " sodas\n" +
-                      "You qualified for the 10% discount!\n" +
+                      " fries, and " + sodas + " sodas!\n" +
+                      "10% discount has applied!\n" +
                       "You saved $" + discounted_amount.toFixed(2) + "!\n" +
                       "Subtotal : $" + subtotal.toFixed(2) + "\n" +
-                      "Meal Tax : 6.25%\n" +
-                      "Your total : $" + finalprice.toFixed(2) + "!");
+                      "Mass. Meal Tax : 6.25%\n" +
+                      "Your total : $" + final_price.toFixed(2) + "!");
             } else {
                 alert("You have ordered " + hotdogs + " hotdogs, " + fries + 
                       " fries, and " + sodas + " sodas!\n" +
-                      "You did not qualify for the 10% discount\n"
-                      "Subtotal : $" + subtotaloriginal.toFixed(2) + "\n" +
-                      "Meal Tax : 6.25%\n" +
-                      "Your total : $" + finalprice.toFixed(2) + "!");
+                      "Subtotal : $" + subtotal_original.toFixed(2) + "\n" +
+                      "Mass. Meal Tax : 6.25%\n" +
+                      "Your total : $" + final_price.toFixed(2) + "!");
             }
         }
     }
+        
+    
+    
+
 
    </script>
    
       
-   <form name="form_1" id="form_1" style="margin: 40px 0 0 400px" 
-         onsubmit="return calculate()">
-    <h1>Welcome to Joe&apos;s!</h1>
-    <p> Please select how many of each item you would like to order. </p>
+   <form name="form1" id="form1" style="margin: 40px 0 0 400px" 
+         onsubmit="return cal()">
+    <h1>Welcome to Joe&apos;s Hotdogs!</h1>
+    <p> choose how many you want for each item </p>
 Hotdogs ($3.25): <select name="Hotdogs" id="Hotdogs" size="1">
     <option value="0" selected="selected">Quantity</option>
     <option value="1">1</option>
@@ -102,7 +111,7 @@ Sodas ($1.50): <select name="Sodas" id="Sodas" size="1">
     <option value="20">20</option>
   </select><br /><br />
   <input type="submit" value="Submit order">
-  <div id="error" style="margin-left: 10px"></div><br/>
+  <div id="errMsg" style="margin-left: 10px"></div><br/>
 </form>
 
 
