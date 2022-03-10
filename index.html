@@ -1,48 +1,119 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-	<title>Joe's Hotdog Stand</title>
-	<meta charset="UTF-8">
+<meta charset="utf-8">
+<title>Joe's Hotdogs using form Extra Credit</title>
+
+<style type="text/css">
+    #errMsg {
+        color: #D20E11;
+        border: solid 1px #d20e11;
+        display:none;
+        padding: 1px 15px;
+    }
+</style>
+
 </head>
+
 <body>
-	<h1 style = "text-align: center;"> Joe's Hotdog Stand </h1>
-	<h2> Your Order </h2> 
-	<script lang="javascript">
-		var hotdogs = 0, fries = 0, sodas = 0, subtotal, discount_val = 0; 
-		var discount = -100, tax, final_amount;
-		hotdogs = prompt("How many hotdogs do you want? Each hotdog is $3.25.");
-		fries = prompt("How many french fries do you want? Each french fry order is $2.00.");
-		sodas = prompt("How many drinks do you want? Each drink is $1.80.");
-		subtotal = (hotdogs * 3.25) + (fries * 2.00) + (sodas * 1.80);
-		if (subtotal > 20) {
-			discount = true;
-			subtotal = subtotal * 0.9;
-		}
-		if (hotdogs == ""){
-			hotdogs = 0;
-		} 
-		if (fries == ""){
-			fries = 0;
-		}
-		if (sodas == ""){
-			sodas = 0;
-		}
-		tax = subtotal * 0.0625;
-		final_amount = subtotal + tax - discount_val;
-		document.write (hotdogs, " orders of hotdog(s)  ----------------- $", (hotdogs * 3.25).toFixed(2), 
-					   "<br>");
-		document.write (fries, " orders of french fries ----------------- $", 
-					   (fries * 2.00).toFixed(2) , "<br>");
-		document.write (sodas, " orders of soda(s) ----------------- $", 
-						(sodas * 1.80).toFixed(2) , "<br>");
-		if (discount == true){
-			document.write("You qualified for our 10% discount <br>");
-		} else {
-			document.write("You did not qualify for our 10% discount <br>");
-		} 
-		document.write("Your subtotal is: $", subtotal.toFixed(2), "<br>");
-		document.write("Tax: $", tax.toFixed(2), "<br>");
-		document.write("Your total today is: ", final_amount.toFixed(2), "<br>");
-	</script> 
+    
+    <script language="javascript">
+    
+    discount = 0;
+    hotdog_price = 3.25;
+    fries_price = 2.00;
+    soda_price = 1.50;
+    mass_tax = 0.0625;
+    
+    
+    function cal( ){
+        hotdogs = parseInt(document.getElementById("Hotdogs").value);
+        fries = parseInt(document.getElementById("Fries").value);
+        sodas = parseInt(document.getElementById("Sodas").value);
+
+        if ((hotdogs + fries + sodas) == 0) {
+            document.getElementById("errMsg").style.display = "inline-block";
+            document.getElementById("errMsg").innerHTML = "Please Select At Least One Item";
+            return false;
+        } else {
+            subtotal = (hotdog_price * hotdogs) + (fries_price * fries) + (soda_price * sodas);
+            
+            subtotal_original = subtotal;
+            
+            if (subtotal >= 20) {
+                discount = true;
+                discounted_amount = subtotal * 0.1
+                subtotal = subtotal * 0.9;
+            }
+            
+            final_price = subtotal * (1 + mass_tax);
+            
+            if (discount == true) {
+                alert("You have ordered " + hotdogs + " hotdogs, " + fries + 
+                      " fries, and " + sodas + " sodas!\n" +
+                      "10% discount has applied!\n" +
+                      "You saved $" + discounted_amount.toFixed(2) + "!\n" +
+                      "Subtotal : $" + subtotal.toFixed(2) + "\n" +
+                      "Mass. Meal Tax : 6.25%\n" +
+                      "Your total : $" + final_price.toFixed(2) + "!");
+            } else {
+                alert("You have ordered " + hotdogs + " hotdogs, " + fries + 
+                      " fries, and " + sodas + " sodas!\n" +
+                      "Subtotal : $" + subtotal_original.toFixed(2) + "\n" +
+                      "Mass. Meal Tax : 6.25%\n" +
+                      "Your total : $" + final_price.toFixed(2) + "!");
+            }
+        }
+    }
+        
+    
+    
+
+
+   </script>
+   
+      
+   <form name="form1" id="form1" style="margin: 40px 0 0 400px" 
+         onsubmit="return cal()">
+    <h1>Welcome to Joe&apos;s Hotdogs!</h1>
+    <p> choose how many you want for each item </p>
+Hotdogs ($3.25): <select name="Hotdogs" id="Hotdogs" size="1">
+    <option value="0" selected="selected">Quantity</option>
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+    <option value="10">10</option>
+    <option value="15">15</option>
+    <option value="20">20</option>
+  </select><br /><br />
+Fries ($2.00): <select name="Fries" id="Fries" size="1">
+    <option value="0" selected="selected">Quantity</option>
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+    <option value="10">10</option>
+    <option value="15">15</option>
+    <option value="20">20</option>
+  </select><br /><br />
+Sodas ($1.50): <select name="Sodas" id="Sodas" size="1">
+    <option value="0" selected="selected">Quantity</option>
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+    <option value="10">10</option>
+    <option value="15">15</option>
+    <option value="20">20</option>
+  </select><br /><br />
+  <input type="submit" value="Submit order">
+  <div id="errMsg" style="margin-left: 10px"></div><br/>
+</form>
+
+
 </body>
 </html>
