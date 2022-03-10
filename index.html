@@ -25,7 +25,6 @@
         sodas = parseInt(document.getElementById("Sodas").value);
 
         if ((hotdogs + fries + sodas) == 0) {
-            document.getElementById("error").style.display = "inline-block";
             document.getElementById("error").innerHTML = "Error: You must select at least one item";
             return false;
         } else {
@@ -43,8 +42,8 @@
             
             if (discount == true) {
                 alert("You have ordered " + hotdogs + " hotdogs, " + fries + 
-                      " fries, and " + sodas + " sodas!\n" +
-                      "10% discount has applied!\n" +
+                      " fries, and " + sodas + " sodas\n" +
+                      "You qualified for the 10% discount!\n" +
                       "You saved $" + discounted_amount.toFixed(2) + "!\n" +
                       "Subtotal : $" + subtotal.toFixed(2) + "\n" +
                       "Mass. Meal Tax : 6.25%\n" +
@@ -58,18 +57,14 @@
             }
         }
     }
-        
-    
-    
-
 
    </script>
    
       
-   <form name="form1" id="form1" 
+   <form name="form" id="form" 
          onsubmit="return calculate()">
-    <h1>Welcome to Joe&apos;s Hotdogs!</h1>
-    <p> choose how many you want for each item </p>
+    <h1>Welcome to Joe&apos;s!</h1>
+    <p> Please select how many of each item you would like to order. </p>
 Hotdogs ($3.25): <select name="Hotdogs" id="Hotdogs" size="1">
     <option value="0" selected="selected">Quantity</option>
     <option value="1">1</option>
