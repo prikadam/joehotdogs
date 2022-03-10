@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>Joe's Hotdogs using form Extra Credit</title>
+<title>Joe's Hotdogs Extra Credit Assignment</title>
 
 <style type="text/css">
     #error {
@@ -19,7 +19,7 @@
     
     discount = 0;
     
-    function cal( ){
+    function calculate( ){
         hotdogs = parseInt(document.getElementById("Hotdogs").value);
         fries = parseInt(document.getElementById("Fries").value);
         sodas = parseInt(document.getElementById("Sodas").value);
@@ -31,7 +31,7 @@
         } else {
             subtotal = (3.25 * hotdogs) + (2.00 * fries) + (1.50 * sodas);
             
-            subtotal_original = subtotal;
+            subtotaloriginal = subtotal;
             
             if (subtotal >= 20) {
                 discount = true;
@@ -39,7 +39,7 @@
                 subtotal = subtotal * 0.9;
             }
             
-            final_price = subtotal * (1.0625);
+            finalprice = subtotal * (1.0625);
             
             if (discount == true) {
                 alert("You have ordered " + hotdogs + " hotdogs, " + fries + 
@@ -48,13 +48,13 @@
                       "You saved $" + discounted_amount.toFixed(2) + "!\n" +
                       "Subtotal : $" + subtotal.toFixed(2) + "\n" +
                       "Mass. Meal Tax : 6.25%\n" +
-                      "Your total : $" + final_price.toFixed(2) + "!");
+                      "Your total : $" + finalprice.toFixed(2) + "!");
             } else {
                 alert("You have ordered " + hotdogs + " hotdogs, " + fries + 
                       " fries, and " + sodas + " sodas!\n" +
-                      "Subtotal : $" + subtotal_original.toFixed(2) + "\n" +
+                      "Subtotal : $" + subtotaloriginal.toFixed(2) + "\n" +
                       "Mass. Meal Tax : 6.25%\n" +
-                      "Your total : $" + final_price.toFixed(2) + "!");
+                      "Your total : $" + finalprice.toFixed(2) + "!");
             }
         }
     }
@@ -66,8 +66,8 @@
    </script>
    
       
-   <form name="form1" id="form1" style="margin: 40px 0 0 400px" 
-         onsubmit="return cal()">
+   <form name="form1" id="form1" 
+         onsubmit="return calculate()">
     <h1>Welcome to Joe&apos;s Hotdogs!</h1>
     <p> choose how many you want for each item </p>
 Hotdogs ($3.25): <select name="Hotdogs" id="Hotdogs" size="1">
