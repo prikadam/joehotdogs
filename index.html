@@ -5,11 +5,9 @@
 <title>Joe's Hotdogs using form Extra Credit</title>
 
 <style type="text/css">
-    #errMsg {
-        color: #D20E11;
-        border: solid 1px #d20e11;
-        display:none;
-        padding: 1px 15px;
+    #error {
+        color: #d20e0e;
+        border: solid 1px #d20e0e;
     }
 </style>
 
@@ -20,11 +18,6 @@
     <script language="javascript">
     
     discount = 0;
-    hotdog_price = 3.25;
-    fries_price = 2.00;
-    soda_price = 1.50;
-    mass_tax = 0.0625;
-    
     
     function cal( ){
         hotdogs = parseInt(document.getElementById("Hotdogs").value);
@@ -32,11 +25,11 @@
         sodas = parseInt(document.getElementById("Sodas").value);
 
         if ((hotdogs + fries + sodas) == 0) {
-            document.getElementById("errMsg").style.display = "inline-block";
-            document.getElementById("errMsg").innerHTML = "Please Select At Least One Item";
+            document.getElementById("error").style.display = "inline-block";
+            document.getElementById("error").innerHTML = "Error: You must select at least one item";
             return false;
         } else {
-            subtotal = (hotdog_price * hotdogs) + (fries_price * fries) + (soda_price * sodas);
+            subtotal = (3.25 * hotdogs) + (2.00 * fries) + (1.50 * sodas);
             
             subtotal_original = subtotal;
             
@@ -46,7 +39,7 @@
                 subtotal = subtotal * 0.9;
             }
             
-            final_price = subtotal * (1 + mass_tax);
+            final_price = subtotal * (1.0625);
             
             if (discount == true) {
                 alert("You have ordered " + hotdogs + " hotdogs, " + fries + 
