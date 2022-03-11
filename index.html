@@ -48,16 +48,17 @@
             if (discount == true) {
                 alert("You have ordered " + hotdogs + " hotdogs, " + fries + 
                       " fries, and " + sodas + " sodas!\n" +
-                      "10% discount has applied!\n" +
+                      "You qualified for our 10% discount!\n" +
                       "You saved $" + discountedamt.toFixed(2) + "!\n" +
                       "Subtotal : $" + subtotal.toFixed(2) + "\n" +
-                      "Mass. Meal Tax : 6.25%\n" +
+                      "Mass. Tax : 6.25%\n" +
                       "Your total : $" + totalcost.toFixed(2) + "!");
             } else {
                 alert("You have ordered " + hotdogs + " hotdogs, " + fries + 
                       " fries, and " + sodas + " sodas!\n" +
+                      "You did not qualify for our 10% discount\n" +
                       "Subtotal : $" + subtotal_original.toFixed(2) + "\n" +
-                      "Mass. Meal Tax : 6.25%\n" +
+                      "Mass. Tax : 6.25%\n" +
                       "Your total : $" + totalcost.toFixed(2) + "!");
             }
         }
@@ -107,7 +108,7 @@ Sodas ($1.50): <select name="Sodas" id="Sodas" size="1">
     <option value="15">15</option>
     <option value="20">20</option>
   </select><br /><br />
-  <input type="submit" value="Submit order">
+  <input type="submit" value="Submit">
   <div id="errorMessage" style="margin-left: 8px"></div><br/>
 </form>
 
