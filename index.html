@@ -2,28 +2,25 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>Joe's Hotdogs using form Extra Credit</title>
+<title>Joe's Hotdogs Part 2</title>
 
 <style type="text/css">
-    #errMsg {
-        color: #D20E11;
-        border: solid 1px #d20e11;
+    #errorMessage {
+        color: #ff0000;
+        border: solid 1px #ff0000;
         display:none;
-        padding: 1px 15px;
+        padding: 1px 10px;
     }
 </style>
 
 </head>
 
-<body>
+<body style="background-color:powderblue;">
     
     <script language="javascript">
     
     discount = 0;
-    hotdog_price = 3.25;
-    fries_price = 2.00;
-    soda_price = 1.50;
-    mass_tax = 0.0625;
+    matax = 0.0625;
     
     
     function cal( ){
@@ -32,36 +29,36 @@
         sodas = parseInt(document.getElementById("Sodas").value);
 
         if ((hotdogs + fries + sodas) == 0) {
-            document.getElementById("errMsg").style.display = "inline-block";
-            document.getElementById("errMsg").innerHTML = "Please Select At Least One Item";
+            document.getElementById("errorMessage").style.display = "inline-block";
+            document.getElementById("errorMessage").innerHTML = "Please Select At Least One Item";
             return false;
         } else {
-            subtotal = (hotdog_price * hotdogs) + (fries_price * fries) + (soda_price * sodas);
+            subtotal = (3.25 * hotdogs) + (2.00 * fries) + (1.50 * sodas);
             
             subtotal_original = subtotal;
             
             if (subtotal >= 20) {
                 discount = true;
-                discounted_amount = subtotal * 0.1
+                discountedamt = subtotal * 0.1
                 subtotal = subtotal * 0.9;
             }
             
-            final_price = subtotal * (1 + mass_tax);
+            totalcost = subtotal * (1 + matax);
             
             if (discount == true) {
                 alert("You have ordered " + hotdogs + " hotdogs, " + fries + 
                       " fries, and " + sodas + " sodas!\n" +
                       "10% discount has applied!\n" +
-                      "You saved $" + discounted_amount.toFixed(2) + "!\n" +
+                      "You saved $" + discountedamt.toFixed(2) + "!\n" +
                       "Subtotal : $" + subtotal.toFixed(2) + "\n" +
                       "Mass. Meal Tax : 6.25%\n" +
-                      "Your total : $" + final_price.toFixed(2) + "!");
+                      "Your total : $" + totalcost.toFixed(2) + "!");
             } else {
                 alert("You have ordered " + hotdogs + " hotdogs, " + fries + 
                       " fries, and " + sodas + " sodas!\n" +
                       "Subtotal : $" + subtotal_original.toFixed(2) + "\n" +
                       "Mass. Meal Tax : 6.25%\n" +
-                      "Your total : $" + final_price.toFixed(2) + "!");
+                      "Your total : $" + totalcost.toFixed(2) + "!");
             }
         }
     }
@@ -75,8 +72,8 @@
       
    <form name="form1" id="form1" style="margin: 40px 0 0 400px" 
          onsubmit="return cal()">
-    <h1>Welcome to Joe&apos;s Hotdogs!</h1>
-    <p> choose how many you want for each item </p>
+    <h1 style="color:darkblue;">Welcome to Joe&apos;s!</h1>
+    <p> Please select from our menu below </p>
 Hotdogs ($3.25): <select name="Hotdogs" id="Hotdogs" size="1">
     <option value="0" selected="selected">Quantity</option>
     <option value="1">1</option>
@@ -111,7 +108,7 @@ Sodas ($1.50): <select name="Sodas" id="Sodas" size="1">
     <option value="20">20</option>
   </select><br /><br />
   <input type="submit" value="Submit order">
-  <div id="errMsg" style="margin-left: 10px"></div><br/>
+  <div id="errorMessage" style="margin-left: 8px"></div><br/>
 </form>
 
 
